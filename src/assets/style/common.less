@@ -1,0 +1,64 @@
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.lib-container {
+  height: 100%;
+  padding-top: 53px;
+  .content, .panel {
+    height: 100%;
+  }
+  .content {
+    padding: 16px;
+  }
+  .panel {
+    border-radius: 4px;
+    border: 1px solid #EBEEF5;
+    background-color: #FFF;
+    color: #303133;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    padding: 15px;
+  }
+  .top {
+    padding: 16px;
+    background-color: #fff;
+    margin-top: -53px;
+    .txt {
+      font-size: 16px;
+      color: #333;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    i {
+      font-size: 16px;
+    }
+  }
+  .search-bar {
+    float: left;
+  }
+  .opr-btns {
+    float: right;
+  }
+  .head {
+    overflow: hidden;
+  }
+  .table-box {
+    height: calc(100% - 115px);
+  }
+  .pagination-box {
+    margin-top: 20px;
+    text-align: right;
+    /deep/ .el-pagination {
+      display: inline-block;
+    }
+  }
+}
+.opr-panel .el-select {
+  width: 100%;
+}
+/deep/ .el-form-item.is-required .el-form-item__label:before{
+  content: '*';
+  color: red
+}

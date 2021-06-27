@@ -28,6 +28,7 @@
 </template>
 
 <script lang="ts">
+import { toRaw } from '@vue/reactivity'
 import { mapState, mapMutations } from 'vuex'
 import { defineComponent } from 'vue'
 export default defineComponent({
@@ -86,12 +87,14 @@ export default defineComponent({
       this.activeTab = routeName
     },
     handleClick (tab) {
-      if (this.judgeTabName(tab.name)) {
+      const obj = toRaw(tab)
+      const props = obj.props ? toRaw(obj.props) : null
+      if (!props || this.judgeTabName(props.name)) {
         return
       }
       this.tabsList.forEach(item => {
-        if (item.routeName === tab.name) {
-          this.activeTab = tab.name
+        if (item.routeName === props.name) {
+          this.activeTab = props.name
           this.$router.push(item.path)
         }
       })

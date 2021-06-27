@@ -10,8 +10,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 // } else {
 //   BASE_URL = 'http://192.168.201.121:58087'
 // }
-const globalConfig = window.GlobalConfig || {}
-const BASE_URL = globalConfig.apiIp ? globalConfig.apiIp : process.env.apiIp
+const BASE_URL = 'http://192.168.201.121:58087'
 const service = axios.create({
   baseURL: BASE_URL, // api的base_url
   timeout: 20000 // 请求超时时间
@@ -68,10 +67,12 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
-export default function axiosReq ({ method = 'get' } = {}, enableQs = true):any {
-  const arg = arguments[0]
-  let opts = Object.assign({ method }, arg)
+// { method = 'get' } = {}, enableQs = true
+export default function axiosReq (...args:any[]):any {
+  // const arg = arguments[0]
+  // let opts = Object.assign({ method }, arg)
+  let opts = Object.assign({}, { method: 'get' }, args[0])
+  const enableQs = args[1] === undefined ? true : args[1]
   if (opts.params && opts.method === 'post') {
     opts.data = opts.params
     enableQs && (opts.data = qs.stringify(opts.params))

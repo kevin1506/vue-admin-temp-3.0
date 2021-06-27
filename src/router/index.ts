@@ -18,15 +18,15 @@ const routes: Array<RouteRecordRaw> = [
           title: '主页'
         },
         component: home
+      },
+      {
+        path: '/control',
+        name: 'control',
+        meta: {
+          title: '控件库'
+        },
+        component: () => import('../views/controlManage/index.vue')
       }
-      // {
-      //   path: '/control',
-      //   name: 'control',
-      //   meta: {
-      //     title: '控件库'
-      //   },
-      //   component: resolve => require(['./views/controlManage/control'], resolve)
-      // },
       // {
       //   path: '/temp',
       //   name: 'temp',
